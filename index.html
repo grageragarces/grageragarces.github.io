@@ -13,6 +13,11 @@
 </head>
 
 <style type="text/css">
+
+  * {
+    box-sizing: border-box;
+  }
+  
   .tab-container {
     display: flex;
     border-bottom: 2px solid #ddd;
@@ -61,7 +66,8 @@
 
   .blogs-image,
   .research-image {
-    width: 150px;
+    width: 100%;
+    max-width: 150px;
     height: auto;
     margin-right: 20px;
     border-radius: 5px;
@@ -86,6 +92,47 @@
   a:hover {
     text-decoration: underline;
   }
+
+  @media screen and (max-width: 768px) {
+  .tab-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .blogs-container,
+  .research-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blogs-image,
+  .research-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  td img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .tab {
+    flex: 1 1 auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  .tab.active {
+    border-bottom: none;
+    border-left: 3px solid #1a0dab;
+  }
+}
 </style>
 
 <script type="text/javascript">
@@ -113,8 +160,7 @@
             <tbody>
               <tr style="padding:0px">
                 <td style="padding:2.5%;width:63%;vertical-align:middle">
-                  <p class="name" style="text-align: center;">
-                  <h1>María Gragera Garcés</h1>
+                  <h1 style="text-align: center;">María Gragera Garcés</h1>
                   </p>
                   <p>
                     I'm a PhD student at
