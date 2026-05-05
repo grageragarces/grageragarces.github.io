@@ -147,7 +147,7 @@
                   <p style="text-align:center">
                     <a href="mailto:m.gragera.garces@gmail.com">Email</a>
                     &nbsp;/&nbsp;
-                    <a href="files/Maria_Gragera_Garces_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+                    <a href="files/Maria_Gragera_Garces_CV___1_page.pdf" target="_blank" rel="noopener noreferrer">CV</a>
                     &nbsp;/&nbsp;
                     <a href="https://www.linkedin.com/in/maria-gragera-garces/" target="_blank"
                       rel="noopener noreferrer">LinkedIn</a> &nbsp;/&nbsp;
@@ -186,8 +186,38 @@
 
           <div id="research" class="content-section active">
             <p>I'm interested in distributed quantum computing, quantum networks, complexity theory, and quantum
-              computing models.</p>
+              security.</p>
             <p>Here are some of my publications:</p>
+
+             <div class="research-container">
+              <img src="images/plotsrand.png" class="research-image" alt="HDH">
+              <div class="research-text">
+                <a href="https://arxiv.org/abs/2605.01974" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="papertitle">On the Distortion of Partitioning Performance by Random Quantum Circuits</span>
+                </a>
+                <br />
+                <strong>María Gragera Garcés</strong>
+                <br />
+                <em>ICDCS DisQIC</em>, 2026
+                <p>An analysis of how randomly generate circuits misguide hypergraph partitioner evaluations for distributed quantum computing.</p>
+              </div>
+            </div>
+
+             <div class="research-container">
+              <img src="images/dqopti.png" class="research-image" alt="HDH">
+              <div class="research-text">
+                <a href="https://arxiv.org/pdf/2605.02727" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="papertitle">Distributed Quantum Circuit Optimisation: Evaluating Global and Local encodings</span>
+                </a>
+                <br />
+                <strong>María Gragera Garcés</strong>, Majid Haghparast
+                <br />
+                <em>ICDCS DisQIC</em>, 2026
+                <p>Emperical study of quantum circuit optimisation in a distributed setting under local and global encodings.</p>
+              </div>
+            </div>
 
              <div class="research-container">
               <img src="images/paperfigdqem.png" class="research-image" alt="HDH">
@@ -279,7 +309,7 @@
                   <span class="papertitle">Distributed Quantum Computing: An Insider Perspective</span>
                 </a>
                 <br />
-                <em>Series of Articles</em>, 2025-Ongoing 
+                <em>Series of Articles</em>, 2025 - Ongoing 
                 <p>
                   A blog unpacking the challenges and opportunities of distributing quantum computations across multiple devices.
                   Focusing on technical insights, I discuss my reasoning and work in this field, as well as future directions.
@@ -595,16 +625,33 @@
           <div id="open-source" class="content-section">
             <p>A collection of projects and repositories I have built over the years:</p>
 
-            <div class="blogs-container" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
-              <img src="images/hdhlogo.png" class="blogs-image" alt="Blog Image" />
+           <div class="blogs-container">
+              <img src="images/plotsrand.png" class="blogs-image" alt="Blog Image" />
               <div class="blogs-text">
-                <a href="https://grageragarces.github.io/HDH/" target="_blank" rel="noopener noreferrer">
-                  <span class="papertitle">The HDH library</span>
+                <a href="https://github.com/grageragarces/Random-circuits-for-DQC" target="_blank" rel="noopener noreferrer">
+                  <span class="papertitle">Random-circuits-for-DQC</span>
                 </a>
                 <br />
-                2025 - Ongoing
-                <p>  Public python library designed for the construction and implementation of HDHs,
-                  an IR for compilation of model agnostic distributed quantum workloads. </p>
+                Uni. of Edinburgh, 2026
+                <p>
+                  Public code and data repository accompanying ICDCS 2026 (DisQIC) paper "On the Distortion of Partitioning Performance by Random Quantum Circuits", 
+                  investigating how random circuits misguide distributed quantum compilers.
+                </p>
+              </div>
+            </div>
+
+            <div class="blogs-container">
+              <img src="images/dqopti.png" class="blogs-image" alt="Blog Image" />
+              <div class="blogs-text">
+                <a href="https://github.com/grageragarces/DQopt" target="_blank" rel="noopener noreferrer">
+                  <span class="papertitle">DQopt</span>
+                </a>
+                <br />
+                Uni. of Edinburgh, 2026
+                <p>
+                  Public code and data repository accompanying ICDCS 2026 (DisQIC) paper "Distributed Quantum Circuit Optimisation: Evaluating Global and Local Encodings", 
+                  investigating the scalability of circuit optimization in distributed quantum computing.
+                </p>
               </div>
             </div>
 
@@ -615,7 +662,7 @@
                   <span class="papertitle">ZNE-DQC</span>
                 </a>
                 <br />
-                2026
+                Uni. of Edinburgh, 2026
                 <p>
                   Public code and data repository accompanying IEEE INFOCOM 2026 (QUNAP) paper "Distributed Quantum Error Mitigation: Global and Local ZNE Encodings",
                   investigating the scalability of zero-noise extrapolation under distributed quantum execution.
@@ -623,6 +670,18 @@
               </div>
             </div>
 
+            <div class="blogs-container" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
+              <img src="images/hdhlogo.png" class="blogs-image" alt="Blog Image" />
+              <div class="blogs-text">
+                <a href="https://grageragarces.github.io/HDH/" target="_blank" rel="noopener noreferrer">
+                  <span class="papertitle">The HDH library</span>
+                </a>
+                <br />
+                Uni. of Edinburgh, 2025 - 2026
+                <p>  Public python library designed for the construction and implementation of HDHs,
+                  an IR for compilation of model agnostic distributed quantum workloads. </p>
+              </div>
+            </div>
 
             <div class="blogs-container">
               <img src="images/qtp.png" class="blogs-image" alt="Blog Image" />
@@ -648,7 +707,7 @@
                     Modelling of photon pair generation in dual-rail lithium niobate photonic nano-wire setup</span>
                 </a>
                 <br />
-                <em>Uni. of Bath</em>, 2024
+                Uni. of Bath, 2024
                 <p> This study addresses a crucial challenge in photonics quantum technologies by engineering novel
                   setups to generate single photon sources with specific and easily implementable wavelengths. This code
                   is part of my undegraduate dissertation conducted at the University of Bath under the supervision of
@@ -665,7 +724,7 @@
                     IBM Quantum Challenge 2024 Lab 1</span>
                 </a>
                 <br />
-                <em>IBM</em>, 2024
+                IBM, 2024
                 <p> As an IBMer, I co-created the first lab of the 2024 IBM Quantum Challenge. The lab is designed to
                   introduce advanced Qiskit users to some of the new capabilities and functions of Qiskit 1.0 -latest
                   version released at the time.</p>
@@ -680,7 +739,7 @@
                     Clifford gate simulator</span>
                 </a>
                 <br />
-                <em>Google Summer of Code</em>, 2022
+                Google Summer of Code, 2022
                 <p> Comprehensive library of frequently used quantum error correcting codes for Julia's simulator of
                   Quantum Clifford Circuits completed during the Summer of Code 2022 Fellowship.
                   Project supervised by Dr. Stefan Krastanov.
@@ -696,7 +755,7 @@
                   <span class="papertitle">Comparing Multiple Networks: A Statistical Viewpoint</span>
                 </a>
                 <br />
-                <em>University of Bath's Mathematics Dep</em>, 2022
+                University of Bath's Mathematics Dep, 2022
                 <p> Research project led by Dr. Sandipan Roy, focused on an analysis of quantum networks against
                   classical networks in different mathematical graph settings from a statistical point of view. </p>
               </div>
@@ -711,7 +770,7 @@
                     state simulation</span>
                 </a>
                 <br />
-                <em>Google Summer of Code</em>, 2022
+                Cisco, 2022
                 <p>Simulation designed in SeQUeNCe (Simulator of QUantum Network Communication) of an experimental set
                   up based on <a href="https://par.nsf.gov/servlets/purl/10381130" target="_blank"
                     rel="noopener noreferrer">The Virtual Quantum Optics
@@ -733,7 +792,7 @@
                   <span class="papertitle">QCTIP 2026</span>
                 </a>
                 <br />
-                <em>2026</em>
+                <em>University of Oxford’s Mathematics Department</em>, April 2026
                 <p>
                   I presented my poster "Global vs Local Encodings for Distributed Quantum Computing" at QCTIP 2026 (Quantum Computing Theory in Practice),
                   the leading UK conference bridging theoretical foundations and practical advances in quantum computing,
@@ -750,7 +809,7 @@
                 <span class="papertitle">Physics World Student Contributor</span>
               </a>
               <br />
-              <em>Physics World Magazine</em>, 2026
+              <em>Physics World Magazine</em>, April 2026
               <p>
                 I’ve been accepted as a student contributor for Physics World! 
                 Excited to share my insights and experiences in quantum computing with a broader audience through this prestigious platform.
