@@ -78,6 +78,36 @@
     color: #1a0dab;
   }
 
+  .topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .topic-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid;
+  }
+
+  .tag-distributed-qc    { background: #dbeafe; border-color: #93c5fd; color: #1d4ed8; }
+  .tag-compiler          { background: #ccfbf1; border-color: #5eead4; color: #0f766e; }
+  .tag-graph             { background: #ede9fe; border-color: #c4b5fd; color: #6d28d9; }
+  .tag-heuristic         { background: #fef3c7; border-color: #fcd34d; color: #b45309; }
+  .tag-circuit-opt       { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; }
+  .tag-empirical         { background: #fce7f3; border-color: #f9a8d4; color: #9d174d; }
+  .tag-error-mit         { background: #fee2e2; border-color: #fca5a5; color: #b91c1c; }
+  .tag-qedu              { background: #dcfce7; border-color: #86efac; color: #15803d; }
+  .tag-stem              { background: #ecfccb; border-color: #bef264; color: #4d7c0f; }
+  .tag-qnet              { background: #e0e7ff; border-color: #a5b4fc; color: #4338ca; }
+  .tag-memory            { background: #f1f5f9; border-color: #94a3b8; color: #475569; }
+  .tag-qinternet         { background: #f5f3ff; border-color: #ddd6fe; color: #7c3aed; }
+  .tag-sustain           { background: #d1fae5; border-color: #6ee7b7; color: #065f46; }
+
   a {
     text-decoration: none;
     color: #1a0dab;
@@ -162,6 +192,11 @@
                     <a href="https://www.research.ed.ac.uk/en/persons/maría-gragera-garcés" target="_blank"
                       rel="noopener noreferrer">Pure</a> &nbsp;
                   </p>
+                  <div class="topic-tags" style="justify-content: center; margin-top: 6px;">
+                    <span class="topic-tag tag-distributed-qc">Distributed QC &mdash; 57%</span>
+                    <span class="topic-tag tag-graph">Graph theory &mdash; 29%</span>
+                    <span class="topic-tag tag-compiler">Compiler research &mdash; 29%</span>
+                  </div>
                 </td>
                 <td style="padding:2.5%;width:37%;max-width:37%">
                   <a href="images/selfie.jpg" target="_blank" rel="noopener noreferrer">
@@ -201,6 +236,12 @@
                 <br />
                 <em>ICDCS DisQIC</em>, 2026
                 <p>An analysis of how randomly generate circuits misguide hypergraph partitioner evaluations for distributed quantum computing.</p>
+                <div class="topic-tags">
+                  <span class="topic-tag tag-graph">Graph theory</span>
+                  <span class="topic-tag tag-heuristic">Heuristic benchmarking</span>
+                  <span class="topic-tag tag-compiler">Compiler research</span>
+                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
+                </div>
               </div>
             </div>
 
@@ -216,6 +257,11 @@
                 <br />
                 <em>ICDCS DisQIC</em>, 2026
                 <p>Empirical study of quantum circuit optimisation in a distributed setting under local and global encodings.</p>
+                <div class="topic-tags">
+                  <span class="topic-tag tag-circuit-opt">Circuit optimisation</span>
+                  <span class="topic-tag tag-empirical">Empirical study</span>
+                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
+                </div>
               </div>
             </div>
 
@@ -231,6 +277,11 @@
                 <br />
                 <em>INFOCOM QUNAP</em>, 2026
                 <p>Empirical exploration of ZNE (a quantum error mitigation technique) in distributed quantum systems under QPU and network noise.</p>
+                <div class="topic-tags">
+                  <span class="topic-tag tag-error-mit">Error mitigation</span>
+                  <span class="topic-tag tag-empirical">Empirical study</span>
+                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
+                </div>
               </div>
             </div>
                        
@@ -246,6 +297,11 @@
                 <br />
                 <em>SIGCOMM Poster</em>, 2025
                 <p>Presentation of an architecture-aware approach using Hybrid Dependency Hypergraphs (HDHs) to model space, time, and type dependencies in distributed execution.</p>
+                <div class="topic-tags">
+                  <span class="topic-tag tag-graph">Graph theory</span>
+                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
+                  <span class="topic-tag tag-compiler">Compiler research</span>
+                </div>
               </div>
             </div>
             
@@ -261,6 +317,9 @@
                 <br />
                 <em>arXiv pre-print</em>, 2025
                 <p>Review of global STEM education and its integration of quantum industry–relevant skills at the secondary school level.</p>
+                <div class="topic-tags">
+                  <span class="topic-tag tag-qedu">Quantum education</span>
+                </div>
               </div>
             </div>
 
@@ -277,6 +336,10 @@
                 <em>US Patent App.</em>, 2024
                 <p>Quantum memory manager patent in a distributed quantum system, specifically handling qubit storage
                   and entanglement between different endpoints.</p>
+                <div class="topic-tags">
+                  <span class="topic-tag tag-qnet">Quantum networks</span>
+                  <span class="topic-tag tag-memory">Memory management</span>
+                </div>
               </div>
             </div>
 
@@ -293,6 +356,10 @@
                 <br />
                 <em>Results of the Quantum Internet Hackathon</em>, 2022
                 <p>Study on the social and ecological sustainability of quantum computing.</p>
+                <div class="topic-tags">
+                  <span class="topic-tag tag-qinternet">Quantum internet</span>
+                  <span class="topic-tag tag-sustain">Sustainability</span>
+                </div>
               </div>
             </div>
 
