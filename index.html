@@ -107,6 +107,9 @@
   .tag-memory            { background: #f1f5f9; border-color: #94a3b8; color: #475569; }
   .tag-qinternet         { background: #f5f3ff; border-color: #ddd6fe; color: #7c3aed; }
   .tag-sustain           { background: #d1fae5; border-color: #6ee7b7; color: #065f46; }
+  .tag-ml                { background: #fff7ed; border-color: #fdba74; color: #c2410c; }
+  .tag-security          { background: #fdf4ff; border-color: #f0abfc; color: #a21caf; }
+  .tag-comm-complexity   { background: #ecfeff; border-color: #67e8f9; color: #0e7490; }
 
   a {
     text-decoration: none;
@@ -193,9 +196,11 @@
                       rel="noopener noreferrer">Pure</a> &nbsp;
                   </p>
                   <div class="topic-tags" style="justify-content: center; margin-top: 6px;">
-                    <span class="topic-tag tag-distributed-qc">Distributed QC &mdash; 57%</span>
-                    <span class="topic-tag tag-graph">Graph theory &mdash; 29%</span>
-                    <span class="topic-tag tag-compiler">Compiler research &mdash; 29%</span>
+                    <span class="topic-tag tag-distributed-qc">Distributed QC &mdash; 50%</span>
+                    <span class="topic-tag tag-graph">Graph theory &mdash; 25%</span>
+                    <span class="topic-tag tag-compiler">Compiler research &mdash; 25%</span>
+                    <span class="topic-tag tag-qnet">Quantum networks &mdash; 25%</span>
+                    <span class="topic-tag tag-empirical">Empirical study &mdash; 25%</span>
                   </div>
                 </td>
                 <td style="padding:2.5%;width:37%;max-width:37%">
@@ -222,9 +227,28 @@
           <div id="research" class="content-section active">
             <p>I'm interested in distributed quantum computing, quantum networks, complexity theory, and quantum
               security.</p>
-            <p>Here are some of my publications:</p>
+            <p>Here are some of my publications:</p> 
 
-             <div class="research-container">
+            <div class="research-container" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
+            <img src="images/ringallreduce.png" class="research-image" alt="QRAR">
+            <div class="research-text">
+                <a href="https://arxiv.org/abs/2606.20344" target="_blank"
+                  rel="noopener noreferrer">
+                    <span class="papertitle">Quantum Ring All-Reduce: Communication and Privacy Advantages for Distributed Learning</span>
+                </a>
+                <br />
+                <strong>María Gragera Garcés</strong>, Lirandë Pira
+                <br />
+                <em>arXiv preprint</em>, 2026
+                <p>Three benefits quantum networks bring to distributed ML training, for both classical and quantum models: bandwidth, privacy, and gradient-conflict detection (the latter with quadratic and exponential separations).</p>                <div class="topic-tags">
+                    <span class="topic-tag tag-qnet">Quantum networks</span>
+                    <span class="topic-tag tag-ml">Distributed Learning</span>
+                    <span class="topic-tag tag-comm-complexity">Communication complexity</span>
+                </div>
+            </div>
+        </div>
+
+            <div class="research-container" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
               <img src="images/plotsrand.png" class="research-image" alt="HDH">
               <div class="research-text">
                 <a href="https://arxiv.org/abs/2605.01974" target="_blank"
@@ -323,7 +347,7 @@
               </div>
             </div>
 
-            <div class="research-container">
+            <div class="research-container" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
               <img src="images/qmm.png" class="research-image" alt="Quantum Memory Manager">
               <div class="research-text">
                 <a href="https://patents.google.com/patent/US20240070514A1/en" target="_blank"
