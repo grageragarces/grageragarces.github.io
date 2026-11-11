@@ -211,6 +211,8 @@
     .finding-summary { font-size: 11px; }
   }
   @media (max-width: 630px) {
+    /* Paper conclusions (and their colour key) and the interest map are laptop/desktop only. */
+    .finding-card, .publication-topline, .desktop-only { display: none !important; }
     /* Keep the original profile content, but avoid two narrow table cells on phones. */
     body > table > tbody > tr:first-child > td > table:first-child > tbody > tr {
       display: flex; flex-direction: column-reverse; align-items: center;
@@ -257,6 +259,13 @@
     document.getElementById(sectionId).classList.add('active');
     if (button) button.classList.add('active');
   }
+
+  // The interest map is hidden at phone width; if the window shrinks while it's open, fall back to Research.
+  window.matchMedia('(max-width: 630px)').addEventListener('change', e => {
+    if (e.matches && document.getElementById('interest-map').classList.contains('active')) {
+      showSection('research', document.querySelector('.tab'));
+    }
+  });
 </script>
 </head>
 
@@ -345,7 +354,7 @@
             <button class="tab" onclick="showSection('experience', this)">Experience</button>
             <button class="tab" onclick="showSection('tutorials', this)">Tutorials & Guides</button>
             <button class="tab" onclick="showSection('community', this)">Community involvement</button>
-            <button class="tab" onclick="showSection('interest-map', this)">Interest map</button>
+            <button class="tab desktop-only" onclick="showSection('interest-map', this)">Interest map</button>
           </div>
 
  <div class="content-section active" id="research">
@@ -2051,7 +2060,7 @@
   </ul>
 </div>
 
-          <div id="interest-map" class="content-section" aria-label="Interest map">
+          <div id="interest-map" class="content-section desktop-only" aria-label="Interest map">
             <p class="interest-subtitle">Select a circle or coloured topic tag to explore its related work. Use the filters or search bar to narrow the results, and “All interests” to reset. Larger circles have more linked entries; other circles sharing entries with your selection also remain highlighted.</p>
             <div class="interest-map-shell">
               <section class="map-canvas-panel" aria-label="Interactive research interest map">
