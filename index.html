@@ -10,8 +10,6 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
   <title>Maria Gragera Garces</title>
-</head>
-
 <style type="text/css">
   .tab-container {
     display: flex;
@@ -120,10 +118,136 @@
   a:hover {
     text-decoration: underline;
   }
+
+  /* --- Publications: compact, colour-coded conclusions --- */
+  .tab-container { flex-wrap: wrap; gap: 2px 4px; }
+  .tab { font-size: 14px; padding: 10px 12px; }
+  .tab:focus-visible, .map-filter:focus-visible, .map-reset:focus-visible,
+  .map-topic:focus-visible, .map-node:focus-visible, .map-results a:focus-visible {
+    outline: 3px solid #2563eb; outline-offset: 3px;
+  }
+  .publication-topline { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px 18px; align-items: end; margin: 0 0 13px; }
+  .finding-legend { display: flex; flex-wrap: wrap; gap: 7px 11px; max-width: 400px; }
+  .finding-key { font-size: 11px; display: inline-flex; align-items: center; gap: 5px; color: #475569; white-space: nowrap; }
+  .legend-swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; border: 1px solid; }
+  .legend-result { background: #e3d7fa; border-color: #d8cbed; }
+  .legend-model { background: #fff7dc; border-color: #ecd899; }
+  .legend-software { background: #e9f8ef; border-color: #a5d8b8; }
+  .publication-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(96px, 14%); gap: 9px; align-items: stretch; margin-bottom: 17px; }
+  .publication-row > .research-container { min-width: 0; margin: 0; align-items: center; padding: 10px; border: 1px solid #ddd; background: #fff; border-radius: 6px; }
+  /* Match original .research-image: 150px wide, natural height, 20px spacing. */
+  .publication-row .research-image { width: 150px; height: auto; flex: 0 0 150px; max-width: none; max-height: none; object-fit: initial; margin-right: 20px; }
+  .publication-row .research-text { min-width: 0; font-size: 13px; line-height: 1.47; color: #334155; }
+  .publication-row .research-text p { margin: 9px 0; line-height: 1.52; }
+  .publication-row .papertitle { line-height: 1.4; display: inline-block; margin-bottom: 3px; }
+  .publication-row .topic-tags { margin-top: 8px; }
+  .finding-card { box-sizing: border-box; display: flex; flex-direction: column; gap: 0; border: 1px solid; border-radius: 7px; padding: 7px 8px; justify-content: center; align-self: stretch; }
+  .finding-result { color: #65527e; border-color: #d8cbed; background: #e3d7fa; }
+  .finding-software { color: #226444; border-color: #a5d8b8; background: #e9f8ef; }
+  .finding-model { color: #74541a; border-color: #ead794; background: #fff8df; }
+  .finding-summary { font-size: 11px; line-height: 1.38; margin: 0 !important; overflow-wrap: anywhere; }
+
+  /* --- Interest map --- */
+  #interest-map { color: #243248; }
+  .interest-heading { margin: 6px 0 8px; color: #16283d; font-size: 26px; }
+  .interest-subtitle { display: block; box-sizing: border-box; width: 100%; max-width: none; margin: 0 0 19px; color: #526275; font-size: 14px; line-height: 1.55; }
+  .interest-map-shell { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-items: stretch; }
+  .map-canvas-panel, .map-sidebar, .map-browser { border: 1px solid #dbe4ed; background: #fff; border-radius: 14px; }
+  .map-canvas-panel { background: radial-gradient(ellipse at 42% 38%, #fff 0, #f7faff 95%); min-width: 0; overflow: hidden; }
+  .map-stage-topline { display: flex; gap: 10px; justify-content: space-between; align-items: center; padding: 13px 17px 0; }
+  .map-stage-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: .09em; color: #66758a; text-transform: uppercase; }
+  .map-reset { font: inherit; font-size: 12px; color: #164b94; padding: 7px 10px; background: #eef4ff; border: 1px solid #d4e4ff; border-radius: 8px; cursor: pointer; }
+  #interest-graph { width: 100%; display: block; aspect-ratio: 920 / 550; overflow: visible; }
+  .map-canvas-caption { border-top: 1px solid #e9eef4; padding: 11px 17px 13px; font-size: 11px; line-height: 1.5; color: #65758a; }
+  .map-sidebar { padding: 16px 18px; display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 4px 24px; align-items: start; }
+  .map-sidebar-kicker { color: #728198; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; font-weight: 700; grid-column: 1; }
+  .map-sidebar h3 { color: #1d3450; font-size: 20px; line-height: 1.24; margin: 3px 0; grid-column: 1; }
+  .map-sidebar > p { margin: 0; color: #526275; font-size: 12px; line-height: 1.5; grid-column: 1; }
+  .map-stats { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 7px; margin: 1px 0; grid-row: 1 / span 3; grid-column: 2; }
+  .map-stat { border: 1px solid #e6ecf3; border-radius: 9px; padding: 8px 10px; background: #f8fbff; }
+  .map-stat strong { display: block; font-size: 21px; color: #203b5d; font-variant-numeric: tabular-nums; }
+  .map-stat span { font-size: 10px; color: #64748b; }
+  .map-sidebar-feature { grid-column: 1 / -1; border-left: 3px solid #c6d8ee; background: #f6f9ff; padding: 9px 11px; margin-top: 4px; border-radius: 0 8px 8px 0; }
+  .map-sidebar-feature strong { color: #2d4b74; font-size: 11px; display: block; margin-bottom: 6px; }
+  .map-sidebar-feature p { font-size: 12px; line-height: 1.55; }
+  .map-browser { margin-top: 14px; padding: 19px; }
+  .map-browser-header { display: flex; gap: 8px; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+  .map-browser h3 { margin: 0; font-size: 18px; color: #1d3450; }
+  .map-match-count { font-size: 12px; color: #61758a; }
+  .map-browser-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+  .map-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+  .map-filter { cursor: pointer; font: inherit; font-size: 12px; background: #fff; border: 1px solid #cbd5e1; color: #4a5a70; padding: 6px 10px; border-radius: 16px; }
+  .map-filter[aria-pressed='true'] { background: #244e83; border-color: #244e83; color: white; }
+  #map-search { font: inherit; font-size: 12px; box-sizing: border-box; border-radius: 8px; border: 1px solid #ccd7e4; padding: 9px 10px; min-width: 190px; max-width: 100%; }
+  .map-results { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; max-height: 640px; overflow-y: auto; padding: 2px; }
+  .map-result { border: 1px solid #e3eaf2; background: #fff; border-radius: 10px; padding: 12px 13px; min-width: 0; }
+  .map-result-meta { color: #69788c; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .map-result a { display: inline-block; font-size: 13px; font-weight: 700; line-height: 1.4; color: #164d9a; overflow-wrap: anywhere; }
+  .map-result p { color: #526275; font-size: 12px; line-height: 1.5; margin: 7px 0 0; }
+  .map-result .map-one-line { border-left: 3px solid #d8cbed; background: #e3d7fa; padding: 7px 9px; color: #65527e; border-radius: 0 5px 5px 0; }
+  .map-result .map-one-line.model { border-color: #e8d58e; background: #fffbeb; color: #715926; }
+  .map-result .map-one-line.software { border-color: #a5d8b8; background: #edf9f0; color: #226444; }
+  .map-empty { padding: 24px 10px; color: #61758a; font-size: 13px; grid-column: 1/-1; }
+  /* Bubbles reuse the palette of the existing coloured topic tags. */
+  .map-graph-line { display: none; stroke: #9dacc0; stroke-width: 1.4; fill: none; pointer-events: none; opacity: .25; }
+  .map-graph-line.is-selected { stroke: #5680b8; stroke-width: 2.4; opacity: .55; }
+  .map-topic { cursor: pointer; transition: opacity .18s ease; }
+  .map-topic .map-topic-bubble { stroke-width: 2.2; filter: drop-shadow(0 3px 4px rgba(28,57,90,.07)); }
+  .map-topic:hover .map-topic-bubble, .map-topic.is-selected .map-topic-bubble { stroke-width: 4; filter: drop-shadow(0 6px 8px rgba(28,57,90,.14)); }
+  .map-topic.is-muted { opacity: .28; }
+  .map-topic .map-topic-label { font: 700 16px Arial,sans-serif; text-anchor: middle; pointer-events: none; }
+  .map-topic .map-topic-count { font: 600 12px Arial,sans-serif; text-anchor: middle; pointer-events: none; opacity: .78; }
+  .map-topic .map-topic-hit { fill: transparent; stroke: transparent; pointer-events: all; }
+  .interest-topic-buttons { display: flex; flex-wrap: wrap; gap: 7px; margin: 11px 0 0; }
+  .interest-topic-buttons button { font-family: inherit; font-size: 11px; cursor: pointer; }
+  .interest-topic-buttons button[aria-pressed='true'] { outline: 2px solid currentColor; outline-offset: 2px; }
+  .map-result-tags { margin-top: 9px; }
+  .map-result-tags .topic-tag { font-size: 10px; padding: 2px 7px; }
+  .map-size-hint { font-weight: 650; }
+  @media (max-width: 800px) {
+    .publication-row { grid-template-columns: minmax(0,1fr) minmax(96px, 14%); gap: 8px; }
+    .publication-row .research-image { width: 150px; height: auto; flex-basis: 150px; margin-right: 20px; }
+    .finding-card { padding: 8px; }
+    .finding-summary { font-size: 11px; }
+  }
+  @media (max-width: 630px) {
+    /* Keep the original profile content, but avoid two narrow table cells on phones. */
+    body > table > tbody > tr:first-child > td > table:first-child > tbody > tr {
+      display: flex; flex-direction: column-reverse; align-items: center;
+    }
+    body > table > tbody > tr:first-child > td > table:first-child > tbody > tr > td {
+      display: block; box-sizing: border-box; width: 100% !important; max-width: 100% !important;
+    }
+    body > table > tbody > tr:first-child > td > table:first-child > tbody > tr > td:last-child {
+      max-width: 180px !important; padding-bottom: 0 !important;
+    }
+    .map-canvas-panel { overflow-x: auto; }
+    #interest-graph { width: 760px; max-width: none; max-height: none; }
+    .publication-row { grid-template-columns: 1fr; gap: 5px; }
+    .publication-row > .research-container { border-radius: 6px; }
+    .publication-row .research-image { width: 150px; height: auto; flex-basis: 150px; margin-right: 20px; }
+    .publication-row .finding-card { justify-self: end; width: min(220px, 72%); }
+    .publication-row .finding-summary { font-size: 11.5px; }
+    .finding-legend { max-width: none; }
+    .map-results { grid-template-columns: 1fr; max-height: 800px; }
+    .map-browser { padding: 13px; }
+    .map-browser-controls { align-items: stretch; }
+    #map-search { width: 100%; }
+    .interest-heading { font-size: 22px; }
+    .map-sidebar { grid-template-columns: 1fr; }
+    .map-sidebar-kicker,.map-sidebar h3,.map-sidebar > p,.map-stats,.map-sidebar-feature { grid-column: 1; grid-row: auto; }
+    .map-stats { margin-top: 10px; }
+  }
+  @media (max-width: 440px) {
+    .publication-row > .research-container { flex-wrap: wrap; gap: 9px 0; }
+    .publication-row .research-text { flex: 1 1 100%; }
+    .publication-row .research-image { margin-right: 0; }
+  }
+
 </style>
 
 <script type="text/javascript">
-  function showSection(sectionId) {
+  function showSection(sectionId, button) {
     document.querySelectorAll('.content-section').forEach(section => {
       section.classList.remove('active');
     });
@@ -131,14 +255,14 @@
       tab.classList.remove('active');
     });
     document.getElementById(sectionId).classList.add('active');
-    event.target.classList.add('active');
+    if (button) button.classList.add('active');
   }
 </script>
 </head>
 
 <body>
   <table
-    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    style="width:100%;max-width:1080px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
@@ -213,220 +337,210 @@
           </table>
 
           <div class="tab-container">
-            <button class="tab active" onclick="showSection('research')">Research</button>
-            <button class="tab" onclick="showSection('blogs')">Blogs</button>
-            <button class="tab" onclick="showSection('podcasts')">Podcasts & Talks</button>
-            <button class="tab" onclick="showSection('open-source')">Repos</button>
-            <button class="tab" onclick="showSection('news')">News</button>
-            <button class="tab" onclick="showSection('experience')">Experience</button>
-            <button class="tab" onclick="showSection('tutorials')">Tutorials & Guides</button>
-            <button class="tab" onclick="showSection('community')">Community involvement</button>
+            <button class="tab active" onclick="showSection('research', this)">Research</button>
+            <button class="tab" onclick="showSection('blogs', this)">Blogs</button>
+            <button class="tab" onclick="showSection('podcasts', this)">Podcasts & Talks</button>
+            <button class="tab" onclick="showSection('open-source', this)">Repos</button>
+            <button class="tab" onclick="showSection('news', this)">News</button>
+            <button class="tab" onclick="showSection('experience', this)">Experience</button>
+            <button class="tab" onclick="showSection('tutorials', this)">Tutorials & Guides</button>
+            <button class="tab" onclick="showSection('community', this)">Community involvement</button>
+            <button class="tab" onclick="showSection('interest-map', this)">Interest map</button>
           </div>
 
-          <div id="research" class="content-section active">
-            <p>I'm interested in distributed quantum computing, quantum networks, complexity theory, and quantum
+ <div class="content-section active" id="research">
+<p>I'm interested in distributed quantum computing, quantum networks, complexity theory, and quantum
               security.</p>
-            <p>Here are some of my publications:</p> 
 
-          <div class="research-container">
-              <img src="images/STRUCTENTCUT.png" class="research-image" alt="HDH">
-              <div class="research-text">
-                <a href="https://arxiv.org/abs/2610.04393v1" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="papertitle">Structural Conditions for Distributed Quantum Advantage</span>
-                </a>
-                <br />
+<p>Here are some of my publications:</p>
+<div class="publication-topline">
+<div aria-label="Key to finding types" class="finding-legend">
+<span class="finding-key"><i aria-hidden="true" class="legend-swatch legend-result"></i> Finding / evaluation</span>
+<span class="finding-key"><i aria-hidden="true" class="legend-swatch legend-software"></i> Software / tool</span>
+<span class="finding-key"><i aria-hidden="true" class="legend-swatch legend-model"></i> Model / proposal</span>
+</div>
+</div>
+
+<div class="publication-row" data-paper-index="0"><div class="research-container publication-main">
+<img alt="HDH" class="research-image" src="images/STRUCTENTCUT.png"/>
+<div class="research-text">
+<a href="https://arxiv.org/abs/2610.04393v1" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">Structural Conditions for Distributed Quantum Advantage</span>
+</a>
+<br/>
                 Sabina Drăgoi, <strong>María Gragera Garcés</strong>, Lirandë Pira
-                <br />
-                <em>arxiv pre-print</em>, 2026
-                <p>Characterisation of the conditions under which distributing a quantum computation across multiple processors can provide an advantage, linking entanglement structure, classical simulability, and the resources required for circuit cutting.</p>                
-                <div class="topic-tags">
-                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
-                  <span class="topic-tag tag-ml">Distributed Learning</span>
-                  <span class="topic-tag tag-circuit-cut">Circuit Cutting</span>
-                </div>
-              </div>
-            </div>
-
-          <div class="research-container">
-              <img src="images/ent.png" class="research-image" alt="HDH">
-              <div class="research-text">
-                <a href="https://arxiv.org/abs/2607.17872" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="papertitle">Entanglement geometry separates circuit cutting, classical hardness, and trainability</span>
-                </a>
-                <br />
-                <strong>María Gragera Garcés</strong>, Sabina Drăgoi, Lirandë Pira
-                <br />
-                <em>QCE Workshop on AI for Circuit Synthesis, Optimization & Discovery</em>, 2026
-                <p>Analysis of how the geometry of entanglement determines the trade-offs between circuit-cutting cost, classical simulability, and trainability, providing a way to identify circuits that are promising for scalable cutting.</p>                
-                <div class="topic-tags">
-                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
-                  <span class="topic-tag tag-ml">Distributed Learning</span>
-                  <span class="topic-tag tag-circuit-cut">Circuit Cutting</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="research-container" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
-            <img src="images/ringallreduce.png" class="research-image" alt="QRAR">
-            <div class="research-text">
-                <a href="https://arxiv.org/abs/2606.20344" target="_blank"
-                  rel="noopener noreferrer">
-                    <span class="papertitle">Quantum Ring All-Reduce: Communication and Privacy Advantages for Distributed Learning</span>
-                </a>
-                <br />
-                <strong>María Gragera Garcés</strong>, Lirandë Pira
-                <br />
-                <em>arXiv preprint</em>, 2026
-                <p>Three benefits quantum networks bring to distributed ML training, for both classical and quantum models: bandwidth, privacy, and gradient-conflict detection (the latter with quadratic and exponential separations).</p>                <div class="topic-tags">
-                    <span class="topic-tag tag-qnet">Quantum networks</span>
-                    <span class="topic-tag tag-ml">Distributed Learning</span>
-                    <span class="topic-tag tag-comm-complexity">Communication complexity</span>
-                </div>
-            </div>
-        </div>
-
-            <div class="research-container" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
-              <img src="images/plotsrand.png" class="research-image" alt="HDH">
-              <div class="research-text">
-                <a href="https://arxiv.org/abs/2605.01974" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="papertitle">On the Distortion of Partitioning Performance by Random Quantum Circuits</span>
-                </a>
-                <br />
-                <strong>María Gragera Garcés</strong>
-                <br />
-                <em>ICDCS DisQIC</em>, 2026
+                <br/>
+<em>arxiv pre-print</em>, 2026
+                <p>Identifies when circuit cutting could enable a genuine quantum advantage: reconstruction must be affordable, the subcircuits must remain hard to simulate classically, and variational gradients must be measurable. Screens 18 circuit families and reconstructs cross-patch correlations on IBM hardware up to 98 qubits.</p>
+<div class="topic-tags">
+<span class="topic-tag tag-distributed-qc">Distributed QC</span>
+<span class="topic-tag tag-ml">Distributed Learning</span>
+<span class="topic-tag tag-circuit-cut">Circuit Cutting</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-model" data-finding-text="Cheap cuts alone give no advantage if the subcircuits are classically easy. Growing blocks behind a fixed interface keep cutting affordable; many fixed-size blocks make the overhead exponential." data-finding-type="model"><p class="finding-summary">Cheap cuts alone give no advantage if the subcircuits are classically easy. Growing blocks behind a fixed interface keep cutting affordable; many fixed-size blocks make the overhead exponential.</p></aside></div>
+<div class="publication-row" data-paper-index="1"><div class="research-container publication-main">
+<img alt="HDH" class="research-image" src="images/ent.png"/>
+<div class="research-text">
+<a href="https://arxiv.org/abs/2607.17872" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">Entanglement geometry separates circuit cutting, classical hardness, and trainability</span>
+</a>
+<br/>
+<strong>María Gragera Garcés</strong>, Sabina Drăgoi, Lirandë Pira
+                <br/>
+<em>QCE Workshop on AI for Circuit Synthesis, Optimization &amp; Discovery</em>, 2026
+                <p>Analysis of how the geometry of entanglement determines the trade-offs between circuit-cutting cost, classical simulability, and trainability, providing a way to identify circuits that are promising for scalable cutting.</p>
+<div class="topic-tags">
+<span class="topic-tag tag-distributed-qc">Distributed QC</span>
+<span class="topic-tag tag-ml">Distributed Learning</span>
+<span class="topic-tag tag-circuit-cut">Circuit Cutting</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-model" data-finding-text="MPS/TTN: cheap cuts, classically easy. Brickwork: hardness conflicts with trainability. Clifford+T: stabiliser-hard, still MPS-simulable." data-finding-type="model"><p class="finding-summary">MPS/TTN: cheap cuts, classically easy. Brickwork: hardness conflicts with trainability. Clifford+T: stabiliser-hard, still MPS-simulable.</p></aside></div>
+<div class="publication-row" data-paper-index="2"><div class="research-container publication-main" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
+<img alt="QRAR" class="research-image" src="images/ringallreduce.png"/>
+<div class="research-text">
+<a href="https://arxiv.org/abs/2606.20344" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">Quantum Ring All-Reduce: Communication and Privacy Advantages for Distributed Learning</span>
+</a>
+<br/>
+<strong>María Gragera Garcés</strong>, Lirandë Pira
+                <br/>
+<em>arXiv preprint</em>, 2026
+                <p>Three benefits quantum networks bring to distributed ML training, for both classical and quantum models: bandwidth, privacy, and gradient-conflict detection (the latter with quadratic and exponential separations).</p> <div class="topic-tags">
+<span class="topic-tag tag-qnet">Quantum networks</span>
+<span class="topic-tag tag-ml">Distributed Learning</span>
+<span class="topic-tag tag-comm-complexity">Communication complexity</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-model" data-finding-text="2× less online data per link; verified entanglement enables private aggregation; quantum gradient checks yield quadratic or exponential savings." data-finding-type="model"><p class="finding-summary">2× less online data per link; verified entanglement enables private aggregation; quantum gradient checks yield quadratic or exponential savings.</p></aside></div>
+<div class="publication-row" data-paper-index="3"><div class="research-container publication-main" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
+<img alt="HDH" class="research-image" src="images/plotsrand.png"/>
+<div class="research-text">
+<a href="https://arxiv.org/abs/2605.01974" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">On the Distortion of Partitioning Performance by Random Quantum Circuits</span>
+</a>
+<br/>
+<strong>María Gragera Garcés</strong>
+<br/>
+<em>ICDCS DisQIC</em>, 2026
                 <p>An analysis of how randomly generated circuits misguide hypergraph partitioner evaluations for distributed quantum computing.</p>
-                <div class="topic-tags">
-                  <span class="topic-tag tag-graph">Graph theory</span>
-                  <span class="topic-tag tag-heuristic">Heuristic benchmarking</span>
-                  <span class="topic-tag tag-compiler">Compiler research</span>
-                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
-                </div>
-              </div>
-            </div>
-
-             <div class="research-container">
-              <img src="images/dqopti.png" class="research-image" alt="HDH">
-              <div class="research-text">
-                <a href="https://arxiv.org/pdf/2605.02727" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="papertitle">Distributed Quantum Circuit Optimisation: Evaluating Global and Local encodings</span>
-                </a>
-                <br />
-                <strong>María Gragera Garcés</strong>, Majid Haghparast
-                <br />
-                <em>ICDCS DisQIC</em>, 2026
+<div class="topic-tags">
+<span class="topic-tag tag-graph">Graph theory</span>
+<span class="topic-tag tag-heuristic">Heuristic benchmarking</span>
+<span class="topic-tag tag-compiler">Compiler research</span>
+<span class="topic-tag tag-distributed-qc">Distributed QC</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-result" data-finding-text="Random circuits inflate cut costs and change partitioner rankings; structured generators match real workloads more closely." data-finding-type="result"><p class="finding-summary">Random circuits inflate cut costs and change partitioner rankings; structured generators match real workloads more closely.</p></aside></div>
+<div class="publication-row" data-paper-index="4"><div class="research-container publication-main">
+<img alt="HDH" class="research-image" src="images/dqopti.png"/>
+<div class="research-text">
+<a href="https://arxiv.org/pdf/2605.02727" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">Distributed Quantum Circuit Optimisation: Evaluating Global and Local encodings</span>
+</a>
+<br/>
+<strong>María Gragera Garcés</strong>, Majid Haghparast
+                <br/>
+<em>ICDCS DisQIC</em>, 2026
                 <p>Empirical study of quantum circuit optimisation in a distributed setting under local and global encodings.</p>
-                <div class="topic-tags">
-                  <span class="topic-tag tag-circuit-opt">Circuit optimisation</span>
-                  <span class="topic-tag tag-empirical">Empirical study</span>
-                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
-                </div>
-              </div>
-            </div>
-
-             <div class="research-container">
-              <img src="images/paperfigdqem.png" class="research-image" alt="HDH">
-              <div class="research-text">
-                <a href="https://arxiv.org/pdf/2602.04981" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="papertitle">Distributed Quantum Error Mitigation: Global and Local ZNE encodings</span>
-                </a>
-                <br />
-                <strong>María Gragera Garcés</strong>
-                <br />
-                <em>INFOCOM QUNAP</em>, 2026
+<div class="topic-tags">
+<span class="topic-tag tag-circuit-opt">Circuit optimisation</span>
+<span class="topic-tag tag-empirical">Empirical study</span>
+<span class="topic-tag tag-distributed-qc">Distributed QC</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-result" data-finding-text="Global: fewer gates, fastest compilation. Local: can save remote gates. Hybrid: can save both, but compiles much slower." data-finding-type="result"><p class="finding-summary">Global: fewer gates, fastest compilation. Local: can save remote gates. Hybrid: can save both, but compiles much slower.</p></aside></div>
+<div class="publication-row" data-paper-index="5"><div class="research-container publication-main">
+<img alt="HDH" class="research-image" src="images/paperfigdqem.png"/>
+<div class="research-text">
+<a href="https://arxiv.org/pdf/2602.04981" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">Distributed Quantum Error Mitigation: Global and Local ZNE encodings</span>
+</a>
+<br/>
+<strong>María Gragera Garcés</strong>
+<br/>
+<em>INFOCOM QUNAP</em>, 2026
                 <p>Empirical exploration of ZNE (a quantum error mitigation technique) in distributed quantum systems under QPU and network noise.</p>
-                <div class="topic-tags">
-                  <span class="topic-tag tag-error-mit">Error mitigation</span>
-                  <span class="topic-tag tag-empirical">Empirical study</span>
-                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
-                </div>
-              </div>
-            </div>
-                       
-             <div class="research-container">
-              <img src="images/hdhsigcomm.png" class="research-image" alt="HDH">
-              <div class="research-text">
-                <a href="https://dl.acm.org/doi/10.1145/3744969.3748417" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="papertitle">Distributed Quantum Computing Across Heterogeneous Hardware with Hybrid Dependency Hypergraphs</span>
-                </a>
-                <br />
-                <strong>María Gragera Garcés</strong>, Chris Heunen, Mahesh Marina
-                <br />
-                <em>SIGCOMM Poster</em>, 2025
+<div class="topic-tags">
+<span class="topic-tag tag-error-mit">Error mitigation</span>
+<span class="topic-tag tag-empirical">Empirical study</span>
+<span class="topic-tag tag-distributed-qc">Distributed QC</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-result" data-finding-text="Global ZNE scales better than local: up to 48% error reduction across six QPUs." data-finding-type="result"><p class="finding-summary">Global ZNE scales better than local: up to 48% error reduction across six QPUs.</p></aside></div>
+<div class="publication-row" data-paper-index="6"><div class="research-container publication-main">
+<img alt="HDH" class="research-image" src="images/hdhsigcomm.png"/>
+<div class="research-text">
+<a href="https://dl.acm.org/doi/10.1145/3744969.3748417" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">Distributed Quantum Computing Across Heterogeneous Hardware with Hybrid Dependency Hypergraphs</span>
+</a>
+<br/>
+<strong>María Gragera Garcés</strong>, Chris Heunen, Mahesh Marina
+                <br/>
+<em>SIGCOMM Poster</em>, 2025
                 <p>Presentation of an architecture-aware approach using Hybrid Dependency Hypergraphs (HDHs) to model space, time, and type dependencies in distributed execution.</p>
-                <div class="topic-tags">
-                  <span class="topic-tag tag-graph">Graph theory</span>
-                  <span class="topic-tag tag-distributed-qc">Distributed QC</span>
-                  <span class="topic-tag tag-compiler">Compiler research</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="research-container">
-              <img src="images/ed.png" class="research-image" alt="Quantum High-School Curricula">
-              <div class="research-text">
-                <a href="https://arxiv.org/abs/2505.14809" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="papertitle">Introducing Quantum Computing to High-School Curricula: A Global Perspective</span>
-                </a>
-                <br />
-                <strong>María Gragera Garcés</strong>, Luis Gómez Orzechowski, Juan Francisco Rodríguez Hernández
-                <br />
-                <em>arXiv pre-print</em>, 2025
+<div class="topic-tags">
+<span class="topic-tag tag-graph">Graph theory</span>
+<span class="topic-tag tag-distributed-qc">Distributed QC</span>
+<span class="topic-tag tag-compiler">Compiler research</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-result" data-finding-text="HDHs unify circuit, measurement and quantum-walk workloads, exposing scheduling, device-placement and communication trade-offs." data-finding-type="result"><p class="finding-summary">HDHs unify circuit, measurement and quantum-walk workloads, exposing scheduling, device-placement and communication trade-offs.</p></aside></div>
+<div class="publication-row" data-paper-index="7"><div class="research-container publication-main">
+<img alt="Quantum High-School Curricula" class="research-image" src="images/ed.png"/>
+<div class="research-text">
+<a href="https://arxiv.org/abs/2505.14809" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">Introducing Quantum Computing to High-School Curricula: A Global Perspective</span>
+</a>
+<br/>
+<strong>María Gragera Garcés</strong>, Luis Gómez Orzechowski, Juan Francisco Rodríguez Hernández
+                <br/>
+<em>arXiv pre-print</em>, 2025
                 <p>Review of global STEM education and its integration of quantum industry–relevant skills at the secondary school level.</p>
-                <div class="topic-tags">
-                  <span class="topic-tag tag-qedu">Quantum education</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="research-container" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
-              <img src="images/qmm.png" class="research-image" alt="Quantum Memory Manager">
-              <div class="research-text">
-                <a href="https://patents.google.com/patent/US20240070514A1/en" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="papertitle">Controlling Quantum Communication via Quantum Memory Management</span>
-                </a>
-                <br />
+<div class="topic-tags">
+<span class="topic-tag tag-qedu">Quantum education</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-model" data-finding-text="Quantum lessons can slot into existing maths, physics and computing classes using modular, open-source material." data-finding-type="model"><p class="finding-summary">Quantum lessons can slot into existing maths, physics and computing classes using modular, open-source material.</p></aside></div>
+<div class="publication-row" data-paper-index="8"><div class="research-container publication-main" style="background-color: #e6f0ff; padding: 10px; border-radius: 8px;">
+<img alt="Quantum Memory Manager" class="research-image" src="images/qmm.png"/>
+<div class="research-text">
+<a href="https://patents.google.com/patent/US20240070514A1/en" rel="noopener noreferrer" target="_blank">
+<span class="papertitle">Controlling Quantum Communication via Quantum Memory Management</span>
+</a>
+<br/>
                 Louis Gwyn Samuel, Santanu Ganguly, <strong>Maria Gragera Garces</strong>, Luca Della Chiesa
-                <br />
-                <em>US Patent App.</em>, 2024
+                <br/>
+<em>US Patent App.</em>, 2024
                 <p>Quantum memory manager patent in a distributed quantum system, specifically handling qubit storage
                   and entanglement between different endpoints.</p>
-                <div class="topic-tags">
-                  <span class="topic-tag tag-qnet">Quantum networks</span>
-                  <span class="topic-tag tag-memory">Memory management</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="research-container">
-              <img src="images/qfk.png" class="research-image" alt="Quantum Memory Manager">
-              <div class="research-text">
-                <a href="files/Qubits_for_the_Kids.pdf" download>
-                  <span class="papertitle">Realizing a sustainable quantum internet for the smallest/future
+<div class="topic-tags">
+<span class="topic-tag tag-qnet">Quantum networks</span>
+<span class="topic-tag tag-memory">Memory management</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-model" data-finding-text="Memory is allocated per application; negotiated qubit lifetimes set storage and teleportation deadlines, with refresh on expiry." data-finding-type="model"><p class="finding-summary">Memory is allocated per application; negotiated qubit lifetimes set storage and teleportation deadlines, with refresh on expiry.</p></aside></div>
+<div class="publication-row" data-paper-index="9"><div class="research-container publication-main">
+<img alt="Quantum Memory Manager" class="research-image" src="images/qfk.png"/>
+<div class="research-text">
+<a download="" href="files/Qubits_for_the_Kids.pdf">
+<span class="papertitle">Realizing a sustainable quantum internet for the smallest/future
                     researchers</span>
-                </a>
-                <br />
+</a>
+<br/>
                 Ed Kuijpers, Swantje Kastrup, Jasper van de Kraats, Robert de Keijzer, Zhichao Guo, <strong>Maria
                   Gragera Garces</strong>, and VesnaManojlovic
-                <br />
-                <em>Results of the Quantum Internet Hackathon</em>, 2022
+                <br/>
+<em>Results of the Quantum Internet Hackathon</em>, 2022
                 <p>Study on the social and ecological sustainability of quantum computing.</p>
-                <div class="topic-tags">
-                  <span class="topic-tag tag-qinternet">Quantum internet</span>
-                  <span class="topic-tag tag-sustain">Sustainability</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
+<div class="topic-tags">
+<span class="topic-tag tag-qinternet">Quantum internet</span>
+<span class="topic-tag tag-sustain">Sustainability</span>
+</div>
+</div>
+</div><aside aria-label="Paper takeaway" class="finding-card finding-result" data-finding-text="Five sustainability criteria: power, materials, maintenance, modularity and form factor; quantum–classical energy comparisons remain difficult." data-finding-type="result"><p class="finding-summary">Five sustainability criteria: power, materials, maintenance, modularity and form factor; quantum–classical energy comparisons remain difficult.</p></aside></div>
+</div>
 
           <div id="blogs" class="content-section">
             <p>Here are some of the blog posts I've written over the years on various topics:</p>
@@ -957,6 +1071,20 @@
           </div>
 
           <div id="news" class="content-section">
+
+            <div class="blogs-container">
+              <img src="images/quantumaiinsiders.jpeg" class="blogs-image" alt="Quantum + AI Summit panel in London" />
+              <div class="blogs-text">
+                <a href="https://lnkd.in/p/grMZY2ww" target="_blank" rel="noopener noreferrer">
+                  <span class="papertitle">Quantum + AI Summit: Qubits Aren't Enough panel</span>
+                </a>
+                <br />
+                <em>London, UK</em>, November 2026
+                <p>
+                  I joined the “Qubits Aren’t Enough: What Must Scale Around the Machine?” panel, alongside Prof. Mikko Möttönen (Aalto Universitysity & VTT), Andrew Lord (BT Group) and Eugene Oleynik (Classiq), chaired by Joe Spencer (IoniQ Consulting), at the Quantum + AI Summit, discussing why useful quantum computing requires progress in software, algorithms, integration, workflows and skills alongside qubit scaling.
+                </p>
+              </div>
+            </div>
 
             <div class="blogs-container">
               <img src="images/RubberDuQ.jpg" class="blogs-image" alt="My RubberDUQ workshop name badge, 16-18 September 2026, Edinburgh" />
@@ -1866,6 +1994,12 @@
     <li>Coloquio Oportunidades de la Computación Cuántica: Benemérita Universidad Autónoma de Puebla (presented virtually), 2023</li>
   </ul>
 
+  <h4>Panel discussions</h4>
+  2026
+  <ul>
+    <li><a href="https://lnkd.in/p/grMZY2ww" target="_blank" rel="noopener noreferrer">Quantum + AI Summit — “Qubits Aren’t Enough: What Must Scale Around the Machine?”</a>: London, UK, November 2026</li>
+  </ul>
+
   <h4>Attended</h4>
   2026
   <ul>
@@ -1917,6 +2051,36 @@
   </ul>
 </div>
 
+          <div id="interest-map" class="content-section" aria-label="Interest map">
+            <p class="interest-subtitle">Select a circle or coloured topic tag to explore its related work. Use the filters or search bar to narrow the results, and “All interests” to reset. Larger circles have more linked entries; other circles sharing entries with your selection also remain highlighted.</p>
+            <div class="interest-map-shell">
+              <section class="map-canvas-panel" aria-label="Interactive research interest map">
+                <div class="map-stage-topline">
+                  <span id="map-stage-label" class="map-stage-eyebrow">Research interests · overview</span>
+                  <button type="button" class="map-reset" id="map-reset">All interests</button>
+                </div>
+                <svg id="interest-graph" viewBox="0 0 920 550" role="img" aria-label="Interactive map of coloured research topics; circle area grows with the number of linked entries"></svg>
+                <div id="map-canvas-caption" class="map-canvas-caption">Each coloured circle is an interest, and bigger circles contain more linked entries. Select a circle to explore the items associated with that interest.</div>
+              </section>
+              <aside class="map-sidebar" aria-live="polite">
+                <span id="map-sidebar-kicker" class="map-sidebar-kicker">Research landscape</span>
+                <h3 id="map-sidebar-title">My research interests</h3>
+                <p id="map-sidebar-description">Select a coloured circle to explore the research, news and repositories associated with that interest.</p>
+                <div id="map-stats" class="map-stats"></div>
+                <div class="map-sidebar-feature"><strong id="map-feature-title">Oversimplified, on purpose</strong><p id="map-feature-text">Open any topic to see the one-line conclusions alongside the linked publications.</p></div>
+              </aside>
+            </div>
+            <div id="interest-topic-buttons" class="interest-topic-buttons" aria-label="Topics"></div>
+            <section class="map-browser" aria-label="Items linked to the selected interest">
+              <div class="map-browser-header"><h3 id="map-browser-title">Connected work</h3><span id="map-match-count" class="map-match-count"></span></div>
+              <div class="map-browser-controls">
+                <div id="map-filters" class="map-filters" role="group" aria-label="Filter by content type"></div>
+                <input id="map-search" type="search" placeholder="Search titles or descriptions…" aria-label="Search connected items" />
+              </div>
+              <div id="map-results" class="map-results" aria-live="polite"></div>
+            </section>
+          </div>
+
         </td>
       </tr>
       <tr>
@@ -1936,6 +2100,568 @@
       </tr>
     </tbody>
   </table>
+
+<script>
+/* Interactive research map. Associations correspond to the original page's
+   item order. New papers/news/roles can be included by extending assignments. */
+(function () {
+  'use strict';
+  const assignments = {
+  "research": [
+    [
+      "dqc",
+      "cut",
+      "theory"
+    ],
+    [
+      "cut",
+      "learning",
+      "theory"
+    ],
+    [
+      "network",
+      "learning",
+      "security",
+      "theory"
+    ],
+    [
+      "dqc",
+      "compiler",
+      "theory"
+    ],
+    [
+      "dqc",
+      "compiler"
+    ],
+    [
+      "dqc",
+      "network"
+    ],
+    [
+      "dqc",
+      "compiler",
+      "software",
+      "theory"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "network",
+      "hardware"
+    ],
+    [
+      "network",
+      "sustain",
+      "education",
+      "community"
+    ]
+  ],
+  "news": [
+    [
+      "dqc",
+      "hardware",
+      "software",
+      "community"
+    ],
+    [
+      "compiler",
+      "software",
+      "community"
+    ],
+    [
+      "dqc",
+      "security",
+      "network"
+    ],
+    [
+      "community"
+    ],
+    [
+      "dqc",
+      "theory",
+      "community"
+    ],
+    [
+      "theory",
+      "hardware",
+      "community"
+    ],
+    [
+      "dqc",
+      "network"
+    ],
+    [
+      "dqc",
+      "compiler"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "dqc",
+      "education",
+      "community"
+    ],
+    [
+      "dqc",
+      "compiler"
+    ],
+    [
+      "network",
+      "compiler"
+    ],
+    [
+      "compiler",
+      "software"
+    ],
+    [
+      "dqc",
+      "community"
+    ],
+    [
+      "software",
+      "compiler",
+      "dqc"
+    ],
+    [
+      "software",
+      "education",
+      "community"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "dqc",
+      "network"
+    ],
+    [
+      "community",
+      "education"
+    ],
+    [
+      "community",
+      "theory"
+    ],
+    [
+      "theory",
+      "community"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "dqc",
+      "network"
+    ],
+    [
+      "compiler",
+      "software"
+    ],
+    [
+      "hardware",
+      "theory"
+    ],
+    [
+      "software",
+      "compiler",
+      "dqc"
+    ],
+    [
+      "software",
+      "education"
+    ],
+    [
+      "education",
+      "community",
+      "software"
+    ],
+    [
+      "education"
+    ],
+    [
+      "community",
+      "education"
+    ],
+    [
+      "community",
+      "hardware"
+    ],
+    [
+      "software",
+      "education"
+    ],
+    [
+      "hardware",
+      "software"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "community"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "community"
+    ],
+    [
+      "community",
+      "education"
+    ],
+    [
+      "community",
+      "education"
+    ],
+    [
+      "community",
+      "education"
+    ],
+    [
+      "network",
+      "sustain",
+      "community"
+    ]
+  ],
+  "experience": [
+    [
+      "dqc",
+      "compiler",
+      "software"
+    ],
+    [
+      "dqc",
+      "theory",
+      "community"
+    ],
+    [
+      "compiler",
+      "software"
+    ],
+    [
+      "compiler",
+      "software"
+    ],
+    [
+      "software",
+      "education",
+      "community"
+    ],
+    [
+      "software",
+      "hardware"
+    ],
+    [
+      "network",
+      "hardware",
+      "software"
+    ]
+  ],
+  "open-source": [
+    [
+      "network",
+      "software"
+    ],
+    [
+      "dqc",
+      "cut",
+      "software",
+      "theory"
+    ],
+    [
+      "dqc",
+      "compiler",
+      "software"
+    ],
+    [
+      "dqc",
+      "compiler",
+      "software"
+    ],
+    [
+      "dqc",
+      "network",
+      "software"
+    ],
+    [
+      "dqc",
+      "compiler",
+      "software"
+    ],
+    [
+      "education",
+      "community"
+    ],
+    [
+      "hardware",
+      "software"
+    ],
+    [
+      "education",
+      "software"
+    ],
+    [
+      "software",
+      "hardware"
+    ],
+    [
+      "network",
+      "theory",
+      "software"
+    ],
+    [
+      "network",
+      "hardware",
+      "software"
+    ]
+  ]
+};
+  const topics = [
+    {id:'dqc',name:'Distributed quantum computing',lines:['Distributed','QC'],desc:'Splitting quantum workloads across processors, with realistic computational, communication and hardware costs.'},
+    {id:'cut',name:'Circuit cutting',lines:['Circuit','cutting'],desc:'When cutting makes a computation feasible, and when classical reconstruction eliminates the advantage.'},
+    {id:'compiler',name:'Compilation & optimisation',lines:['Compilers &','optimisation'],desc:'Partitioning, intermediate representations, circuit optimisation and architecture-aware execution.'},
+    {id:'network',name:'Quantum networks',lines:['Quantum','networks'],desc:'Entanglement distribution, teleportation, network noise and quantum communication resources.'},
+    {id:'learning',name:'Distributed learning',lines:['Distributed','learning'],desc:'Quantum communication and entanglement structures for distributed and variational learning.'},
+    {id:'security',name:'Security & privacy',lines:['Security &','privacy'],desc:'Information-theoretic privacy and cryptography in networked quantum systems.'},
+    {id:'theory',name:'Complexity & theory',lines:['Complexity','& theory'],desc:'Classical hardness, trainability, graph structures and resource separations.'},
+    {id:'software',name:'Software & tools',lines:['Software','& tools'],desc:'Open-source libraries, simulations, compilers and reusable tools for quantum computing.'},
+    {id:'education',name:'Quantum education',lines:['Quantum','education'],desc:'Making quantum computing teachable and accessible, from classrooms to technical workshops.'},
+    {id:'hardware',name:'Hardware & photonics',lines:['Hardware &','photonics'],desc:'Physical implementations, photonic devices, quantum memory and hardware constraints.'},
+    {id:'community',name:'Community & outreach',lines:['Community','& outreach'],desc:'Workshops, conferences, mentoring and communication of quantum research.'},
+    {id:'sustain',name:'Sustainability',lines:['Sustainability'],desc:'Environmental and social considerations for emerging quantum networks and technologies.'}
+  ];
+  const tagForTopic = {
+    dqc:'tag-distributed-qc', cut:'tag-circuit-cut', compiler:'tag-compiler',
+    network:'tag-qnet', learning:'tag-ml', security:'tag-security',
+    theory:'tag-graph', software:'tag-circuit-opt', education:'tag-qedu',
+    hardware:'tag-qinternet', community:'tag-stem', sustain:'tag-sustain'
+  };
+  // Read colours from the existing CSS tags rather than maintaining a separate map palette.
+  function topicColors(id) {
+    const sample=document.createElement('span');
+    sample.className='topic-tag '+tagForTopic[id];
+    sample.style.position='absolute'; sample.style.visibility='hidden';
+    document.body.append(sample);
+    const style=window.getComputedStyle(sample);
+    const palette={fill:style.backgroundColor,stroke:style.borderTopColor,text:style.color};
+    sample.remove();
+    return palette;
+  }
+  const types = [
+    {id:'research',label:'Publications',short:'Papers',color:'#c98f9b'},
+    {id:'news',label:'News',short:'News',color:'#9685c5'},
+    {id:'experience',label:'Experience / roles',short:'Roles',color:'#66a69d'},
+    {id:'open-source',label:'Repositories',short:'Repositories',color:'#75a7dc'}
+  ];
+  const svgNS='http://www.w3.org/2000/svg';
+  const graph=document.getElementById('interest-graph');
+  if (!graph) return;
+  const items=[];
+  const clean=s=>(s||'').replace(/\s+/g,' ').trim();
+  const snippet=(s,limit)=>s.length>limit ? s.slice(0,limit).replace(/\s+\S*$/,'')+'…' : s;
+  const counters={};
+  Object.entries(assignments).forEach(([type,topicLists])=>{
+    const section=document.getElementById(type);
+    const entries=section ? section.querySelectorAll(type==='research' ? '.research-container' : '.blogs-container') : [];
+    if (entries.length!==topicLists.length) console.warn('Update interest-map topic assignments for',type,'expected',topicLists.length,'found',entries.length);
+    entries.forEach((entry,index)=>{
+      const titleEl=entry.querySelector('.papertitle');
+      const anchor=titleEl ? titleEl.closest('a') : entry.querySelector('a');
+      const desc=entry.querySelector('.research-text p,.blogs-text p');
+      const conclusion=entry.closest('.publication-row')?.querySelector('.finding-card');
+      const title=clean(titleEl?.textContent)||clean(anchor?.textContent)||'Untitled entry';
+      const url=anchor?.getAttribute('href')||'';
+      items.push({id:type+'-'+index,type,title,url,description:clean(desc?.textContent),
+        finding:conclusion?.getAttribute('data-finding-text')||'',
+        findingType:conclusion?.getAttribute('data-finding-type')||'result',
+        topics:topicLists[index]||[]});
+    });
+    counters[type]=entries.length;
+  });
+  let activeTopic=null;
+  let activeType='all';
+  let query='';
+  const byId=id=>document.getElementById(id);
+  const svg=(tag,attrs={},text)=>{
+    const e=document.createElementNS(svgNS,tag);
+    Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,String(v)));
+    if (text!==undefined) e.textContent=text;
+    return e;
+  };
+  const htmlEl=(tag,className,text)=>{
+    const e=document.createElement(tag); if(className)e.className=className;
+    if(text!==undefined)e.textContent=text; return e;
+  };
+  function activateWithKeyboard(element,callback){
+    element.setAttribute('tabindex','0'); element.setAttribute('role','button');
+    element.addEventListener('click',callback);
+    element.addEventListener('keydown',evt=>{if(evt.key==='Enter'||evt.key===' '){evt.preventDefault();callback();}});
+  }
+  function resetSvg(){ graph.replaceChildren(); }
+  function multiLineText(parent,x,y,lines,klass='',color=''){
+    const t=svg('text',{x,y,class:klass});
+    if(color) t.setAttribute('fill',color);
+    lines.forEach((line,i)=>t.append(svg('tspan',{x,dy:i===0?0:18},line)));
+    parent.append(t); return t;
+  }
+  // One circle per research topic. Sizes are calculated from linked item counts.
+  const nodeData=topics.map((t,i)=>{
+    const count=items.filter(x=>x.topics.includes(t.id)).length;
+    const radius=30+11.7*Math.sqrt(count);
+    const anchors={
+      community:[.20,.24],education:[.42,.18],software:[.64,.24],dqc:[.81,.48],
+      compiler:[.55,.64],network:[.31,.60],theory:[.14,.79],hardware:[.82,.16],
+      cut:[.70,.83],learning:[.43,.85],security:[.11,.50],sustain:[.87,.80]
+    };
+    const point=anchors[t.id];
+    return {topic:t,count,r:radius,anchorX:920*point[0],anchorY:550*point[1],
+      x:920*point[0],y:550*point[1],colors:topicColors(t.id)};
+  });
+  // A deterministic, non-overlapping circle layout, kept within the SVG bounds.
+  function layoutCircles(nodes){
+    const width=920,height=550,margin=9,gap=8;
+    for(let iter=0;iter<550;iter++){
+      const forces=nodes.map(n=>({x:(n.anchorX-n.x)*.013,y:(n.anchorY-n.y)*.013}));
+      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i],b=nodes[j],dx=b.x-a.x,dy=b.y-a.y;
+        const distance=Math.max(0.001,Math.hypot(dx,dy));
+        const needed=a.r+b.r+gap;
+        if(distance<needed){
+          const push=(needed-distance)*.22;
+          // Break ties deterministically so positions are stable on every load.
+          const ux=distance<.002?Math.cos(i*3+j):dx/distance;
+          const uy=distance<.002?Math.sin(i*3+j):dy/distance;
+          forces[i].x-=ux*push; forces[i].y-=uy*push;
+          forces[j].x+=ux*push; forces[j].y+=uy*push;
+        }
+      }
+      nodes.forEach((n,i)=>{
+        n.x=Math.max(n.r+margin,Math.min(width-n.r-margin,n.x+forces[i].x));
+        n.y=Math.max(n.r+margin,Math.min(height-n.r-margin,n.y+forces[i].y));
+      });
+    }
+  }
+  layoutCircles(nodeData);
+  // Shared entries determine related topics, without drawing connector lines.
+  const relationships=[];
+  nodeData.forEach((a,i)=>nodeData.slice(i+1).forEach(b=>{
+    const overlap=items.filter(item=>item.topics.includes(a.topic.id)&&item.topics.includes(b.topic.id)).length;
+    if(overlap>0)relationships.push({a,b,overlap});
+  }));
+  function renderOverview(){
+    resetSvg();
+    graph.setAttribute('viewBox','0 0 920 550');
+    const directlyRelated=new Set();
+    if(activeTopic){
+      relationships.forEach(edge=>{
+        if(edge.a.topic.id===activeTopic) directlyRelated.add(edge.b.topic.id);
+        if(edge.b.topic.id===activeTopic) directlyRelated.add(edge.a.topic.id);
+      });
+    }
+    nodeData.forEach(({topic,count,r,x,y,colors})=>{
+      const chosen=topic.id===activeTopic;
+      const muted=activeTopic&&!chosen&&!directlyRelated.has(topic.id);
+      const g=svg('g',{
+        class:'map-topic'+(chosen?' is-selected':'')+(muted?' is-muted':''),
+        'aria-label':topic.name+', '+count+' linked items; select to filter',
+        'aria-pressed':String(chosen)
+      });
+      g.append(svg('circle',{cx:x,cy:y,r,class:'map-topic-bubble',fill:colors.fill,stroke:colors.stroke}));
+      const lines=topic.lines;
+      const startingY=y-(lines.length===1?7:18);
+      const label=multiLineText(g,x,startingY,lines,'map-topic-label',colors.text);
+      if(topic.id==='community') label.setAttribute('font-size','14');
+      g.append(svg('text',{x,y:y+Math.min(47,r*.52),class:'map-topic-count',fill:colors.text},count+' items'));
+      g.append(svg('title',{},topic.name+' · '+count+' linked entries'));
+      activateWithKeyboard(g,()=>setTopic(topic.id));
+      graph.append(g);
+    });
+  }
+  function addStat(parent,n,label){
+    const wrap=htmlEl('div','map-stat');
+    wrap.append(htmlEl('strong','',String(n)),htmlEl('span','',label)); parent.append(wrap);
+  }
+  function updateSidebar(){
+    const focused=topics.find(t=>t.id===activeTopic);
+    const pool=focused ? items.filter(x=>x.topics.includes(focused.id)) : items;
+    byId('map-sidebar-kicker').textContent=focused?'Selected interest':'Research landscape';
+    byId('map-sidebar-title').textContent=focused?focused.name:'My research interests';
+    byId('map-sidebar-description').textContent=focused?focused.desc:'Browse '+topics.length+' interests. The size of each coloured circle reflects how many entries are associated with that topic.';
+    const stats=byId('map-stats');stats.replaceChildren();
+    types.forEach(t=>addStat(stats,pool.filter(x=>x.type===t.id).length,t.short));
+    const feature=pool.find(x=>x.type==='research'&&x.finding);
+    byId('map-feature-title').textContent=feature?'One-line paper conclusion':'Browse the connections';
+    byId('map-feature-text').textContent=feature?feature.finding:'Select a topic or search below to explore the entries linked to each interest.';
+    byId('map-stage-label').textContent=focused?'Topic focus · '+focused.name:'Research interests · overview';
+    byId('map-canvas-caption').textContent=focused?'Selected: '+focused.name+'. Its publications, news, roles and repositories are listed below. Select it again to view everything.':'Larger circles represent interests with more linked entries. Select a circle to explore related publications, news, roles and repositories.';
+    byId('map-browser-title').textContent=focused?'Connected work · '+focused.name:'Connected work · all interests';
+  }
+  function renderButtons(){
+    const wrap=byId('interest-topic-buttons');wrap.replaceChildren();
+    topics.forEach(t=>{
+      const b=htmlEl('button','topic-tag '+tagForTopic[t.id],t.name); b.type='button';
+      b.setAttribute('aria-pressed',String(activeTopic===t.id));
+      b.addEventListener('click',()=>setTopic(t.id));wrap.append(b);
+    });
+    const filters=byId('map-filters');filters.replaceChildren();
+    [{id:'all',label:'All' },...types].forEach(t=>{
+      const b=htmlEl('button','map-filter',t.label); b.type='button';
+      b.setAttribute('aria-pressed',String(activeType===t.id));
+      b.addEventListener('click',()=>setType(t.id)); filters.append(b);
+    });
+  }
+  function renderResults(){
+    const scoped=items.filter(item=>!activeTopic||item.topics.includes(activeTopic));
+    const results=scoped.filter(item=>(activeType==='all'||item.type===activeType) && (item.title+' '+item.description+' '+item.finding).toLowerCase().includes(query.toLowerCase()));
+    byId('map-match-count').textContent=results.length+' shown / '+scoped.length+' linked';
+    const resultBox=byId('map-results');resultBox.replaceChildren();
+    if(!results.length){resultBox.append(htmlEl('p','map-empty','No matching items. Try another topic, type or search term.'));return;}
+    // Recent papers first; display other groups without disrupting their source order.
+    results.forEach(item=>{
+      const div=htmlEl('article','map-result');
+      div.append(htmlEl('div','map-result-meta',types.find(t=>t.id===item.type)?.label||item.type));
+      if(item.url){
+        const link=htmlEl('a','',item.title);link.href=item.url; link.target='_blank'; link.rel='noopener noreferrer';div.append(link);
+      }else div.append(htmlEl('strong','',item.title));
+      const description=item.type==='research'&&item.finding ? item.finding : snippet(item.description,175);
+      if(description){const p=htmlEl('p',item.type==='research'?'map-one-line '+item.findingType:'',description);div.append(p);}
+      const tags=htmlEl('div','topic-tags map-result-tags');
+      item.topics.forEach(topicId=>{
+        const topic=topics.find(t=>t.id===topicId);
+        if(topic)tags.append(htmlEl('span','topic-tag '+tagForTopic[topicId],topic.name));
+      });
+      div.append(tags); resultBox.append(div);
+    });
+  }
+  function refresh(){
+    renderOverview();
+    updateSidebar();renderButtons();renderResults();
+  }
+  function setTopic(id){activeTopic=id===activeTopic?null:id;activeType='all';refresh();}
+  function setType(id){activeType=id===activeType?'all':id;refresh();}
+  byId('map-reset').addEventListener('click',()=>{activeTopic=null;activeType='all';query='';byId('map-search').value='';refresh();});
+  byId('map-search').addEventListener('input',e=>{query=e.target.value;renderResults();});
+  refresh();
+})();
+</script>
+
 </body>
 
 </html>
